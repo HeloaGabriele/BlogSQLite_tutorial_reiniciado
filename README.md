@@ -1,6 +1,6 @@
 # ⚙️Projeto BlogSQLite:
 O projeto analisado- BlogSQLite_Tutorial_Reiniciado é uma aplicação desenvolvida com SQL, Nodejs e ExpressJs;  
-O objetivo pricipal desse projeto é um site onde os clientes possam se cadastrar e visualizar os seus perfis logados;
+O objetivo principal desse projeto é um site onde os clientes possam se cadastrar e visualizar os seus perfis logados;
 
 ## 💻Tecnologias:
 - **Nodejs**
@@ -9,7 +9,7 @@ O objetivo pricipal desse projeto é um site onde os clientes possam se cadastra
   - body-parser
   - express session
 - **SQLite**
-  - Linux
+  
   
 
 
@@ -50,7 +50,7 @@ O objetivo pricipal desse projeto é um site onde os clientes possam se cadastra
 ## 📡Rotas da API
 - **POST `login/cadastro`**_ Faz o cadastro
 - **POST `usuário/cadastro`**_ Faz o cadastro
-- **GET `usuário/cadastro`**_ devolve a página usuário
+- **GET `usuário/cadastro`**_ Devolve a página usuário
 - **GET `sobre/cadastro`**_ Devolve a página sobre
 - **GET `login/cadastro`**_ Devolve a página de login
 

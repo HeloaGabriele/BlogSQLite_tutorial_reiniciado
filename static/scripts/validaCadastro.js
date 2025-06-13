@@ -14,7 +14,7 @@ const msgErrorElements = document.getElementsByClassName("msgError");
 const createDisplayMsgError = (mensagem) => {
   if (msgErrorElements.length > 0) {
     msgErrorElements[0].textContent = mensagem;
-    msgErrorElements[0].computedStyleMap.display = mensagem ? 'block' : 'none';
+    msgErrorElements[0].style.display = mensagem ? 'block' : 'none';
   }
 };
 /* --------------------------------------------------------------------- */

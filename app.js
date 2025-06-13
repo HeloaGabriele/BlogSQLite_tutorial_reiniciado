@@ -46,7 +46,7 @@ app.use(
 app.use("/static", express.static(__dirname + "/static"));
 
 // Middleware para processar as requisições envio de JSON
-app.use(express.json())
+app.use(express.json());
 
 // Middleware para processar as requisições do Body Parameters do cliente
 //app.use(bodyParser.urlencoded({ extended: true }));
@@ -118,7 +118,7 @@ app.post("/cadastro", (req, res) => {
   if (!username || !password || !email) {
     return res.status(400).json({
       success: false,
-      message: "NOme de usuário, senha e email são obrigatórios.",
+      message: "Nome de usuário, senha e email são obrigatórios.",
     });
   }
  
@@ -148,7 +148,7 @@ app.post("/cadastro", (req, res) => {
       }
       return res.status(409).json({ 
         success: false,
-        message: `${conflictField} já cadastrado. POr Favor, escolha outro.`,
+        message: `${conflictField} já cadastrado. Por Favor, escolha outro.`,
       })
     } else {
       // 3. Se usuário não existe no banco cadastrar
@@ -157,10 +157,21 @@ app.post("/cadastro", (req, res) => {
       db.run(
         insertQuery,
         [username, password, email, celular, cpf, rg],
-        (err) => {
+        function (err) {
           // Inserir a lógica do INSERT
-          if (err) throw err;
-          res.redirect("/login");
+          if (err) {
+            console.error("Erro ao inserir usuário no banco:", err.message);
+            return res.status(500).json({ 
+              success: false,
+              message: "Erro interno do servidor ao cadastrar usuário.",
+            });
+          }
+          console.log(`Usuário ${username} cadastrado com ID: ${this.lastID}`);
+          return res.status(201).json({
+            success: true,
+            message: "Usuário cadastrado com sucesso!",
+            userID: this.lastID,
+          });
         }
       );
     }
